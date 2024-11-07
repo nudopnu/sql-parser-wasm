@@ -1,10 +1,10 @@
 # sql-parser-wasm 🌐
 
-I needed a way to parse [goose](https://pressly.github.io/goose/) sql migrations in the browser. This repository is meant to be compiled to WebAssembly (WASM) and exposes two functions:
-- `parseMigrations(fileContent: string)` → should be called to parse a migration file's content and returns the containing up and down migration statements as plain text
-- `parseSql(sql: string)` → should be called to parse each detected statement
+This repository provides a WebAssembly (WASM) module for parsing [Goose](https://pressly.github.io/goose/) SQL migrations in the browser. It exposes two main functions:
+- `parseMigrations(fileContent: string)`: Parses the content of a migration file, returning the `UP` and `DOWN` migration statements as plain text.
+- `parseSql(sql: string)`: Parses individual SQL statements detected within a migration.
 
-## Usage
+## Sample usage
 
 ```js
 await parseMigrations(`-- +goose Up
@@ -37,9 +37,16 @@ await parseSQL("DROP TABLE refresh_tokens;");
 
 ## Setup
 
-Compile with
+Make sure you have [Go installed](https://go.dev/dl/) (version 1.16 or later) on your machine.
+
+#### Building the WebAssembly Binary
+
+To compile the Go code into WebAssembly, run:
+
 ```bash
 GOOS=js GOARCH=wasm go build -o example/main.wasm
 ```
 
-See example setup in `example` folder
+This will produce `main.wasm` in the example directory.
+
+> Note: The `wasm_exec.js` file in the `example` folder is provided by Go and is required to run Webssembly modules in the browser. For the latset version, see the Go source [here](https://github.com/golang/go/blob/master/lib/wasm/wasm_exec.js).
