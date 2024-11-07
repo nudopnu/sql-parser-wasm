@@ -42,4 +42,4 @@ Compile with
 GOOS=js GOARCH=wasm go build -o example/main.wasm
 ```
 
-See example usage in `example` folder
+See example setup in `example` folder
