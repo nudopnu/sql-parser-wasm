@@ -7,7 +7,7 @@ I needed a way to parse [goose](https://pressly.github.io/goose/) sql migrations
 ## Usage
 
 ```js
-await parseMigrations(`-- +migrate Up
+await parseMigrations(`-- +goose Up
 CREATE TABLE refresh_tokens (
 token TEXT PRIMARY KEY,
 	user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -16,7 +16,7 @@ token TEXT PRIMARY KEY,
  	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  	updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
  );
- -- +migrate Down
+ -- +goose Down
  DROP TABLE refresh_tokens;`);
 // {UpStatements: Array(1), DownStatements: Array(1), DisableTransactionUp: false, DisableTransactionDown: false}
 
