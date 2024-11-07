@@ -2,13 +2,11 @@ package main
 
 import (
 	"syscall/js"
-
-	"github.com/nudopnu/sql-parser-wasm/internal/parsing"
 )
 
 func main() {
 	c := make(chan struct{}, 0)
-	js.Global().Set("parseMigrations", js.FuncOf(parsing.ParseMigrations))
-	js.Global().Set("parseSQL", js.FuncOf(parsing.ProcessSql))
+	js.Global().Set("parseMigrations", js.FuncOf(parseMigrationsFunc))
+	js.Global().Set("parseSQL", js.FuncOf(processSqlFunc))
 	<-c
 }
