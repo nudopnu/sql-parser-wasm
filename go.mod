@@ -11,4 +11,5 @@ require (
 	github.com/blastrain/vitess-sqlparser v0.0.0-20201030050434-a139afbb1aba // indirect
 	github.com/juju/errors v1.0.0 // indirect
 	golang.org/x/text v0.19.0 // indirect
+	golang.org/syscall/js v0.0.0
 )
