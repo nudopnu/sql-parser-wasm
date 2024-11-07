@@ -1,4 +1,8 @@
-# sql-parser-wasm
+# sql-parser-wasm 🌐
+
+I needed a way to parse [goose](https://pressly.github.io/goose/) sql migrations in the browser. This repository is meant to be compiled to WebAssembly (WASM) and exposes two functions:
+- `parseMigrations(fileContent: string)` should be called to parse a migration file's content and returns the containing up and down migrations as plain text
+- `parseSql(sql: string)` should be called to parse each detected statement
 
 ## Usage
 
