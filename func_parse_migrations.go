@@ -1,3 +1,5 @@
+//go:build js && wasm
+
 package main
 
 import (
@@ -6,7 +8,6 @@ import (
 	"syscall/js"
 
 	"github.com/nudopnu/sql-parser-wasm/internal/parsing"
-	"github.com/nudopnu/sql-parser-wasm/internal/utils"
 )
 
 func parseMigrationsFunc(this js.Value, i []js.Value) interface{} {
@@ -15,5 +16,5 @@ func parseMigrationsFunc(this js.Value, i []js.Value) interface{} {
 	if err != nil {
 		log.Fatal(fmt.Errorf("error parsing migrations: %w", err))
 	}
-	return utils.ToJSON(migration)
+	return ToJSON(migration)
 }

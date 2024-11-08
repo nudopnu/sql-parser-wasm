@@ -1,3 +1,5 @@
+//go:build js && wasm
+
 package main
 
 import (
@@ -6,7 +8,6 @@ import (
 	"syscall/js"
 
 	"github.com/nudopnu/sql-parser-wasm/internal/parsing"
-	"github.com/nudopnu/sql-parser-wasm/internal/utils"
 )
 
 func processSqlFunc(this js.Value, i []js.Value) interface{} {
@@ -15,5 +16,5 @@ func processSqlFunc(this js.Value, i []js.Value) interface{} {
 	if err != nil {
 		log.Fatal(fmt.Errorf("error parsing sql: %w", err))
 	}
-	return utils.ToJSON(statement)
+	return ToJSON(statement)
 }
